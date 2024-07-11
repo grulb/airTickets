@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TestAirTickets" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary colors for BottomNavigationBar -->
+    </style>
+
+    <style name="Theme.TestAirTickets" parent="Base.Theme.TestAirTickets" />
+
+    <style name="CustomButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/grey2</item>
+        <item name="android:radius">15dp</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">italic</item>
+        <item name="textAllCaps">false</item>
+        <item name="fontFamily">@string/hello_blank_fragment</item>
+    </style>
+</resources>
