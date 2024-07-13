@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+    android:orientation="vertical"
     tools:context=".fragments.SearchFragment">
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:background="@drawable/from_where_background">
@@ -40,7 +42,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="47dp"
             android:layout_marginBottom="48dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginEnd="10dp"
             android:layout_toEndOf="@+id/searchBackButton"
             android:src="@drawable/bottom_sheet_rect" />
 
@@ -70,14 +72,409 @@
             android:src="@drawable/back_arrow" />
 
         <ImageView
+            android:id="@+id/placeSwitcher"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="-30dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/searchFromEdit"
+            android:padding="4dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/change_arrows_icon" />
+
+        <ImageView
             android:id="@+id/cancelButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_alignParentBottom="true"
             android:layout_marginStart="-30dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginBottom="10dp"
             android:layout_toEndOf="@+id/searchWhereEdit"
             android:scaleType="fitXY"
-            android:src="@drawable/cancel_icon" />
+            android:src="@drawable/cancel_icon"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="15dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:background="@drawable/from_where_background">
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/plus_icon"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Обратно"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/from_where_background">
+
+                <TextView
+                    android:id="@+id/currentDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:textStyle="italic"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/from_where_background">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/profileicon"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1, эконом"
+                    android:textSize="14dp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/searchFiltersButton"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/from_where_background">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/settings_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Фильтры"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:background="@drawable/flight_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Прямые рейсы"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <RelativeLayout
+            android:id="@+id/firstPopularLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/popularFirst"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/just_round_shape"
+                android:backgroundTint="@color/red"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/flightFirstHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/popularFirst"
+                android:text="Тут первое название"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/flightFirstTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/flightFirstHeader"
+                android:layout_toEndOf="@+id/popularFirst"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="2dp"
+                android:textSize="14dp"
+                android:text="Тут первое время отправки"
+                android:textColor="@color/grey4" />
+
+            <TextView
+                android:id="@+id/flightFirstPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="Тут цена >"
+                android:textColor="@color/blue"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bottom_sheet_rect" />
+
+        <RelativeLayout
+            android:id="@+id/secondPopularLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/popularSecond"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/just_round_shape"
+                android:backgroundTint="@color/blue"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/flightSecondHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/popularSecond"
+                android:layout_marginStart="10dp"
+                android:text="Тут второе название"
+                android:textSize="16dp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/flightSecondTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/flightSecondHeader"
+                android:layout_toEndOf="@+id/popularSecond"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="2dp"
+                android:textSize="14dp"
+                android:text="Тут второе время отправки"
+                android:textColor="@color/grey4" />
+
+            <TextView
+                android:id="@+id/flightSecondPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="Тут цена >"
+                android:textColor="@color/blue"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bottom_sheet_rect" />
+
+        <RelativeLayout
+            android:id="@+id/thirdPopularLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/popularThird"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/just_round_shape"
+                android:backgroundTint="@color/white"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/flightThirdHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/popularThird"
+                android:layout_marginStart="10dp"
+                android:text="Тут третье название"
+                android:textSize="16dp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/flightThirdTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/flightThirdHeader"
+                android:layout_toEndOf="@+id/popularThird"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="2dp"
+                android:textSize="14dp"
+                android:text="Тут третье время отправки"
+                android:textColor="@color/grey4" />
+
+            <TextView
+                android:id="@+id/flightThirdPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="Тут цена >"
+                android:textColor="@color/blue"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bottom_sheet_rect" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:text="Показать все"
+            android:textAllCaps="false"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/blue"
+            android:textSize="16dp"
+            android:background="@android:color/transparent" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/allTicketsButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/just_rounded_rectangle"
+        android:backgroundTint="@color/blue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:text="Посмотреть все билеты"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="italic" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/flight_background">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="16dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:src="@drawable/bell_icon"
+            app:tint="@color/blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="0dp"
+            android:layout_toEndOf="@+id/imageView5"
+            android:text="Подписка на цену"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <Switch
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     </RelativeLayout>
 

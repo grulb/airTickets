@@ -1,14 +1,15 @@
 package com.example.testairtickets.fragments
 
+import Classes.DataMovingClass
 import Classes.InputFilter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract.RawContacts.Data
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.example.testairtickets.SheetPlug
@@ -16,7 +17,6 @@ import com.example.testairtickets.R
 import com.example.testairtickets.databinding.FragmentAirTicketsBinding
 import com.example.testairtickets.databinding.SheetLayoutBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,6 +29,7 @@ class AirTicketsFragment : Fragment() {
     private lateinit var binding: FragmentAirTicketsBinding
     private lateinit var bottomSheetBinding: SheetLayoutBinding
     private lateinit var dialog: BottomSheetDialog
+    private lateinit var dataMove: DataMovingClass
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +48,10 @@ class AirTicketsFragment : Fragment() {
         bottomSheetBinding.sheetWhereEdit.filters = arrayOf(InputFilter())
         binding.fromEditText.filters = arrayOf(InputFilter())
 
+        val fromData = bottomSheetBinding.sheetFromEdit.text.toString()
+        val whereData = bottomSheetBinding.sheetWhereEdit.text.toString()
+        dataMove = DataMovingClass(fromText = fromData, whereText = whereData)
+
         musicTopsGetInfo()
         showBottomSheet(dialog, bottomSheetBinding.root)
         sheetButtons()
@@ -54,7 +59,6 @@ class AirTicketsFragment : Fragment() {
         textCheck()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun musicTopsGetInfo(){
         val retrofit = Retrofit.Builder()
             .baseUrl("https://drive.usercontent.google.com/")
@@ -112,8 +116,8 @@ class AirTicketsFragment : Fragment() {
             dialog.setContentView(view)
             dialog.show()
 
-            val fromData = binding.fromEditText.text.toString()
-            bottomSheetBinding.sheetFromEdit.setText(fromData)
+            val dataMove = binding.fromEditText.text.toString()
+            bottomSheetBinding.sheetFromEdit.setText(dataMove)
         }
     }
 
@@ -143,8 +147,11 @@ class AirTicketsFragment : Fragment() {
         }
 
         bottomSheetBinding.searchButton.setOnClickListener {
-//            There moving to SearchFragment
-
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.airticketsFrame, SearchFragment())
+            fragmentTransaction.commit()
+            dialog.hide()
         }
     }
 
@@ -153,6 +160,7 @@ class AirTicketsFragment : Fragment() {
             bottomSheetBinding.cancelButton.isVisible = !text.isNullOrEmpty()
         }
     }
+
     private fun popularPlacesButtons(){
         bottomSheetBinding.firstPopularLayout.setOnClickListener {
             bottomSheetBinding.sheetWhereEdit.setText("Стамбул")
