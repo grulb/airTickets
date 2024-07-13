@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#0C0C0C</color>
+    <color name="black">#000000</color>
     <color name="grey1">#1D1E20</color>
+    <color name="sheetBack">#242529</color>
     <color name="grey2">#2F3035</color>
     <color name="grey3">#3E3F43</color>
     <color name="grey4">#5E5F61</color>

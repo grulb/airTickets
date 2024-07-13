@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".fragments.SearchFragment">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/from_where_background">
+
+        <EditText
+            android:id="@+id/searchFromEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/searchBackButton"
+            android:background="@android:color/transparent"
+            android:hint="Откуда - Москва"
+            android:textColor="@color/white"
+            android:textColorHint="@color/grey4" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="47dp"
+            android:layout_marginBottom="48dp"
+            android:layout_marginEnd="25dp"
+            android:layout_toEndOf="@+id/searchBackButton"
+            android:src="@drawable/bottom_sheet_rect" />
+
+        <EditText
+            android:id="@+id/searchWhereEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toEndOf="@+id/searchBackButton"
+            android:hint="Куда - Турция"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent"
+            android:textColorHint="@color/grey4" />
+
+        <ImageView
+            android:id="@+id/searchBackButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="37dp"
+            android:src="@drawable/back_arrow" />
+
+        <ImageView
+            android:id="@+id/cancelButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="-30dp"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@+id/searchWhereEdit"
+            android:scaleType="fitXY"
+            android:src="@drawable/cancel_icon" />
+
+    </RelativeLayout>
+
+</LinearLayout>

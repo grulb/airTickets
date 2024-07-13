@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.TestAirTickets" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.TestAirTickets" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary colors for BottomNavigationBar -->
     </style>
 
@@ -16,4 +16,5 @@
         <item name="textAllCaps">false</item>
         <item name="fontFamily">@string/hello_blank_fragment</item>
     </style>
+
 </resources>
