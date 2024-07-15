@@ -1,15 +1,13 @@
 package com.example.testairtickets.fragments
 
-import Classes.DataMovingClass
 import Classes.InputFilter
-import android.annotation.SuppressLint
+import Classes.DataContainer
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.example.testairtickets.SheetPlug
@@ -29,7 +27,6 @@ class AirTicketsFragment : Fragment() {
     private lateinit var binding: FragmentAirTicketsBinding
     private lateinit var bottomSheetBinding: SheetLayoutBinding
     private lateinit var dialog: BottomSheetDialog
-    private lateinit var dataMove: DataMovingClass
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,16 +38,16 @@ class AirTicketsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val fromData = DataContainer.getFromText(requireContext())
+        binding.fromEditText.setText(fromData)
+
         dialog = BottomSheetDialog(requireContext())
         bottomSheetBinding = SheetLayoutBinding.inflate(layoutInflater)
 
         bottomSheetBinding.sheetFromEdit.filters = arrayOf(InputFilter())
         bottomSheetBinding.sheetWhereEdit.filters = arrayOf(InputFilter())
         binding.fromEditText.filters = arrayOf(InputFilter())
-
-        val fromData = bottomSheetBinding.sheetFromEdit.text.toString()
-        val whereData = bottomSheetBinding.sheetWhereEdit.text.toString()
-        dataMove = DataMovingClass(fromText = fromData, whereText = whereData)
 
         musicTopsGetInfo()
         showBottomSheet(dialog, bottomSheetBinding.root)
@@ -143,10 +140,14 @@ class AirTicketsFragment : Fragment() {
 
         bottomSheetBinding.cancelButton.setOnClickListener {
             bottomSheetBinding.sheetWhereEdit.text = null
-            bottomSheetBinding.cancelButton.visibility = View.INVISIBLE
+            bottomSheetBinding.cancelButton
         }
 
         bottomSheetBinding.searchButton.setOnClickListener {
+            val fromData = bottomSheetBinding.sheetFromEdit.text.toString().trim()
+            val whereData = bottomSheetBinding.sheetWhereEdit.text.toString().trim()
+            DataContainer.saveData(requireContext(), fromData, whereData)
+
             val fragmentManager = requireActivity().supportFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.airticketsFrame, SearchFragment())
@@ -158,6 +159,7 @@ class AirTicketsFragment : Fragment() {
     private fun textCheck() {
         bottomSheetBinding.sheetWhereEdit.addTextChangedListener { text ->
             bottomSheetBinding.cancelButton.isVisible = !text.isNullOrEmpty()
+            bottomSheetBinding.searchButton.isVisible = !text.isNullOrEmpty()
         }
     }
 

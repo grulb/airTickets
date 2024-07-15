@@ -58,7 +58,8 @@
                             android:hint="Откуда - Москва"
                             android:textColor="@color/white"
                             android:background="@android:color/transparent"
-                            android:textColorHint="@color/grey4" />
+                            android:textColorHint="@color/grey4"
+                            android:singleLine="true"/>
 
                         <ImageView
                             android:id="@+id/imageView4"
@@ -74,16 +75,17 @@
                             android:id="@+id/sheetWhereEdit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="30dp"
                             android:layout_marginEnd="25dp"
                             android:layout_marginBottom="15dp"
-                            android:layout_toEndOf="@+id/searchButton"
+                            android:background="@android:color/transparent"
                             android:hint="Куда - Турция"
                             android:textColor="@color/white"
-                            android:background="@android:color/transparent"
-                            android:textColorHint="@color/grey4" />
+                            android:textColorHint="@color/grey4"
+                            android:singleLine="true"/>
 
                         <ImageView
                             android:id="@+id/searchButton"
@@ -92,7 +94,8 @@
                             android:layout_alignParentStart="true"
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="15dp"
-                            android:src="@drawable/magnifier_light" />
+                            android:src="@drawable/magnifier_light"
+                            android:visibility="invisible"/>
 
                         <ImageView
                             android:id="@+id/cancelButton"
@@ -107,21 +110,22 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/relativeLayout3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:paddingHorizontal="20dp"
+                    android:paddingHorizontal="10dp"
                     app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
 
                         <LinearLayout
                             android:id="@+id/linearLayoutHardMap"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_weight="1">
 
                                 <ImageButton
                                     android:id="@+id/hardMapButton"
@@ -151,7 +155,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="25dp"
                             android:layout_toEndOf="@+id/linearLayoutHardMap"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_weight="1">
 
                                 <ImageButton
                                     android:id="@+id/whereYouWantButton"
@@ -181,7 +186,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="25dp"
                             android:layout_toEndOf="@+id/linearLayoutWhereYouWant"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_weight="1">
 
                                 <ImageButton
                                     android:id="@+id/weekendButton"
@@ -211,7 +217,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="25dp"
                             android:layout_toEndOf="@+id/linearLayoutWeekend"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_weight="1">
 
                                 <ImageButton
                                     android:id="@+id/hotTicketsButton"
@@ -235,7 +242,7 @@
 
                         </LinearLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

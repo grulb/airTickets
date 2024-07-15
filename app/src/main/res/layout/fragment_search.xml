@@ -31,7 +31,8 @@
             android:background="@android:color/transparent"
             android:hint="Откуда - Москва"
             android:textColor="@color/white"
-            android:textColorHint="@color/grey4" />
+            android:textColorHint="@color/grey4"
+            android:singleLine="true"/>
 
         <ImageView
             android:id="@+id/imageView4"
@@ -59,7 +60,8 @@
             android:hint="Куда - Турция"
             android:textColor="@color/white"
             android:background="@android:color/transparent"
-            android:textColorHint="@color/grey4" />
+            android:textColorHint="@color/grey4"
+            android:singleLine="true"/>
 
         <ImageView
             android:id="@+id/searchBackButton"
@@ -111,6 +113,7 @@
             android:layout_marginTop="15dp">
 
             <LinearLayout
+                android:id="@+id/backDateButton"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:orientation="horizontal"
@@ -124,15 +127,18 @@
                     android:layout_marginStart="10dp" />
 
                 <TextView
+                    android:id="@+id/backDateText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Обратно"
                     android:textColor="@color/white"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp" />
+                    android:layout_marginStart="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/flightDate"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:orientation="horizontal"
@@ -236,7 +242,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/just_round_shape"
                 android:backgroundTint="@color/red"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/flightFirstHeader"
@@ -246,8 +253,9 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/popularFirst"
-                android:text="Тут первое название"
-                android:textColor="@color/white" />
+                android:text=""
+                android:textColor="@color/white"
+                android:textStyle="italic"/>
 
             <TextView
                 android:id="@+id/flightFirstTime"
@@ -258,8 +266,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="2dp"
                 android:textSize="14dp"
-                android:text="Тут первое время отправки"
-                android:textColor="@color/grey4" />
+                android:text=""
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/flightFirstPrice"
@@ -268,9 +276,10 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:text="Тут цена >"
+                android:text=""
                 android:textColor="@color/blue"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:textStyle="italic"/>
         </RelativeLayout>
 
         <ImageView
@@ -293,7 +302,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/just_round_shape"
                 android:backgroundTint="@color/blue"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/flightSecondHeader"
@@ -301,9 +311,10 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/popularSecond"
                 android:layout_marginStart="10dp"
-                android:text="Тут второе название"
+                android:text=""
                 android:textSize="16dp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textStyle="italic"/>
 
             <TextView
                 android:id="@+id/flightSecondTime"
@@ -314,8 +325,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="2dp"
                 android:textSize="14dp"
-                android:text="Тут второе время отправки"
-                android:textColor="@color/grey4" />
+                android:text=""
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/flightSecondPrice"
@@ -324,9 +335,10 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:text="Тут цена >"
+                android:text=""
                 android:textColor="@color/blue"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:textStyle="italic"/>
 
         </RelativeLayout>
 
@@ -350,7 +362,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/just_round_shape"
                 android:backgroundTint="@color/white"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/flightThirdHeader"
@@ -358,9 +371,10 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/popularThird"
                 android:layout_marginStart="10dp"
-                android:text="Тут третье название"
+                android:text=""
                 android:textSize="16dp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textStyle="italic"/>
 
             <TextView
                 android:id="@+id/flightThirdTime"
@@ -371,8 +385,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="2dp"
                 android:textSize="14dp"
-                android:text="Тут третье время отправки"
-                android:textColor="@color/grey4" />
+                android:text=""
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/flightThirdPrice"
@@ -381,9 +395,10 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:text="Тут цена >"
+                android:text=""
                 android:textColor="@color/blue"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:textStyle="italic"/>
         </RelativeLayout>
 
         <ImageView
@@ -393,6 +408,7 @@
             android:background="@drawable/bottom_sheet_rect" />
 
         <Button
+            android:id="@+id/showAllTicketsButtons"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:text="Показать все"

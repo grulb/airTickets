@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:paddingHorizontal="15dp"
+    tools:context=".fragments.AllTicketsFragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/grey1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/allTicketsBackButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:src="@drawable/back_arrow"
+                app:tint="@color/blue" />
+
+            <TextView
+                android:id="@+id/fromHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/allTicketsBackButton"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/dateHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toEndOf="@+id/allTicketsBackButton"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/passHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@+id/allTicketsBackButton"
+                android:text="Дата заказа, 1 пассажир"
+                android:textColor="@color/grey4"
+                android:textSize="16dp"
+                android:textStyle="italic" />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar2"
+        android:layout_marginTop="5dp">
+        
+        <ProgressBar
+            android:id="@+id/allTicketsLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="0dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/firstLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/offset_rounded_rectangle"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/firstBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/just_rounded_rectangle"
+                        android:backgroundTint="@color/blue"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="2dp"
+                        android:text="Текст бейджа"
+                        android:textColor="@color/white"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/firstPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/firstBadge"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Тут цена"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/firstPrice"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/firstImageView"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/just_round_shape"
+                            android:backgroundTint="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/firstLinearStart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="45dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/firstFlightStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:text="Отправка"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/firstAirportStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="От"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/firstJustDash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/firstLinearStart"
+                            android:text="—"
+                            android:textColor="@color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/firstLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/firstJustDash"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/firstFlightEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:text="Прибытие"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/firstAirportEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="До"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/firstAddText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/firstLinearLayout"
+                            android:text="...ч в пути/Без пересадок"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/secondLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/offset_rounded_rectangle"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/secondBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/just_rounded_rectangle"
+                        android:backgroundTint="@color/blue"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="2dp"
+                        android:text="Текст бейджа"
+                        android:textColor="@color/white"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/secondPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/secondBadge"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Тут цена"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/secondPrice"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/secondImageView"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/just_round_shape"
+                            android:backgroundTint="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/secondLinearStart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="45dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/secondFlightStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:text="Отправка"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/secondAirportStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="От"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/secondJustDash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/secondLinearStart"
+                            android:text="—"
+                            android:textColor="@color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/secondLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/secondJustDash"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/secondFlightEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:text="Прибытие"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/secondAirportEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="До"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/secondAddText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/secondLinearLayout"
+                            android:text="...ч в пути/Без пересадок"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/thirdLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/offset_rounded_rectangle"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/thirdBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/just_rounded_rectangle"
+                        android:backgroundTint="@color/blue"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="2dp"
+                        android:text="Текст бейджа"
+                        android:textColor="@color/white"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/thirdPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/thirdBadge"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Тут цена"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:textStyle="bold"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/thirdPrice"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/thirdImageView"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/just_round_shape"
+                            android:backgroundTint="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/thirdLinearStart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="45dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/thirdFlightStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:text="Отправка"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/thirdAirportStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="От"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/thirdJustDash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/thirdLinearStart"
+                            android:text="—"
+                            android:textColor="@color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/thirdLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/thirdJustDash"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/thirdFlightEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:text="Прибытие"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/thirdAirportEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="До"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/thirdAddText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/thirdLinearLayout"
+                            android:text="...ч в пути/Без пересадок"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fourLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/offset_rounded_rectangle"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/fourBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/just_rounded_rectangle"
+                        android:backgroundTint="@color/blue"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="2dp"
+                        android:text="Текст бейджа"
+                        android:textColor="@color/white"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/fourPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/fourBadge"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Тут цена"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/fourPrice"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/fourImageView"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/just_round_shape"
+                            android:backgroundTint="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/fourLinearStart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="45dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/fourFlightStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:text="Отправка"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/fourAirportStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="От"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/fourJustDash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/fourLinearStart"
+                            android:text="—"
+                            android:textColor="@color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/fourLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/fourJustDash"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/fourFlightEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:text="Прибытие"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/fourAirportEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="До"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/fourAddText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/fourLinearLayout"
+                            android:text="...ч в пути/Без пересадок"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fiveLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/offset_rounded_rectangle"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/fiveBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/just_rounded_rectangle"
+                        android:backgroundTint="@color/blue"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="2dp"
+                        android:text="Текст бейджа"
+                        android:textColor="@color/white"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/fivePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/fiveBadge"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Тут цена"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:textStyle="bold"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/fivePrice"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/fiveImageView"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/just_round_shape"
+                            android:backgroundTint="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/fiveLinearStart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="45dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/fiveFlightStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:text="Отправка"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/fiveAirportStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="От"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/fiveJustDash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/fiveLinearStart"
+                            android:text="—"
+                            android:textColor="@color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/fiveLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/fiveJustDash"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/fiveFlightEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:text="Прибытие"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/fiveAirportEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="До"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/fiveAddText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/fiveLinearLayout"
+                            android:text="...ч в пути/Без пересадок"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sixLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="60dp"
+                    android:background="@drawable/offset_rounded_rectangle"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/sixBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/just_rounded_rectangle"
+                        android:backgroundTint="@color/blue"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="2dp"
+                        android:text="Текст бейджа"
+                        android:textColor="@color/white"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/sixPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sixBadge"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Тут цена"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sixPrice"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/sixImageView"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/just_round_shape"
+                            android:backgroundTint="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/sixLinearStart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="45dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/sixFlightStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="0dp"
+                                android:text="Отправка"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/sixAirportStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="От"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/sixJustDash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/sixLinearStart"
+                            android:text="—"
+                            android:textColor="@color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/sixLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/sixJustDash"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/sixFlightEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:text="Прибытие"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/sixAirportEnd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="3dp"
+                                android:text="До"
+                                android:textAllCaps="true"
+                                android:textColor="@color/grey4" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/sixAddText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/sixLinearLayout"
+                            android:text="...ч в пути/Без пересадок"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/just_round_shape"
+        android:backgroundTint="@color/blue"
+        android:layout_centerHorizontal="true">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/settings_icon"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="Фильтр"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/graphic_icon"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="График цен"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
